@@ -153,22 +153,12 @@ list<Data *> byte3arr[256] = {{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
 
 
 void radixByteWiseSort(list<Data *> &l){
-
-
   for(auto data: l){
     string ssn = data->ssn;
     char charArr[9]= {ssn[0] , ssn[1] , ssn[2] , ssn[4] , ssn[5] , ssn[7] , ssn[8] , ssn[9] , ssn[10]};
     unsigned int number = stol(charArr);
     unsigned char byte0 = (number) & 0xFFu; 
-    // unsigned char byte1 = (number >> 8u) & 0xFFu; 
-    // unsigned char byte2 = (number >> 16u) & 0xFFu; 
-    // unsigned char byte3 = (number >> 24u) & 0xFFu; 
-    // cout << (unsigned int)byte1 << endl; 
-    // byte0arr[(unsigned int)byte0].push_back(data);
-    // byte1arr[(unsigned int)byte1].push_back(data);
-    // byte2arr[(unsigned int)byte2].push_back(data);
     byte0arr[(unsigned int)byte0].push_back(data);
-    // (currentbyteArrPtr + (unsigned int)(byte1))->push_back(data); 
 
   }
   list<Data *>::iterator it = l.begin(); 
