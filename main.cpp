@@ -112,8 +112,8 @@ int main() {
 // class defintions here if you wish.
 class Bin{
   public:
-    Data * bucketValue[35000]; 
-    uint_fast32_t ssns[35000]; 
+    Data * bucketValue[125000]; 
+    uint_fast32_t ssns[125000]; 
     unsigned int lastIndex = 0; 
 };
 
@@ -121,8 +121,8 @@ Bin bucketB0[256];
 Bin bucketB1[256]; 
 Bin bucketB2[256]; 
 Bin bucketB3[256]; 
-vector<Data *> llfarr[26][26][26][26];
-Data * arrData[1000000]; 
+vector<Data *> llfarr[26][26][26];
+Data * arrData[1010000]; 
 
 
 int getCase(list<Data *> &l){
@@ -152,7 +152,7 @@ bool compare(Data* first, Data* second) {
 
 void addToBinsFFLL(list<Data *> &l){
     for(auto &data: l)
-      llfarr[(data->lastName)[0]-65][(data->lastName)[1]-65][(data->firstName)[0] - 65][(data->firstName)[1] - 65].push_back(data);  
+      llfarr[(data->lastName)[0]-65][(data->lastName)[1]-65][(data->lastName)[2] - 65].push_back(data);  
 }
 
 
@@ -162,13 +162,11 @@ void t12(list<Data *> &l){
     for(int i = 0; i<26; ++i ){
         for(int j = 0; j<26; ++j){
             for(int k = 0; k<26; ++k){
-                for(int m =0; m<26; ++m){
-                    sort(llfarr[i][j][k][m].begin(), llfarr[i][j][k][m].end(),compare); 
-                    for(auto data: llfarr[i][j][k][m]){
-                        *it = data;
-                        ++it;
-                    }
-                }
+              sort(llfarr[i][j][k].begin(), llfarr[i][j][k].end(),compare); 
+              for(auto data: llfarr[i][j][k]){
+                  *it = data;
+                  ++it;
+              }
             }
         }
     }
