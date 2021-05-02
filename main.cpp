@@ -241,7 +241,7 @@ void t4(list<Data *> &l){
       data = bucketB2[i].bucketValue[j];
       ssn = bucketB2[i].ssns[j]; 
       bnumber = (ssn >> 24u) & 0xFFu;  
-      bucketB3[bnumber].bucketValue[bucketB3[bnumber].lastIndex] = (data);
+      bucketB3[bnumber].bucketValue[bucketB3[bnumber].lastIndex++] = (data);
     }
   }
 
